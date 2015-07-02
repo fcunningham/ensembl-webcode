@@ -88,7 +88,7 @@ sub render_content {
     
     $html = $self->toggleable_table("$phenotype associated variants", $table_id, $table, 1, qq(<span style="float:right"><a href="#$self->{'id'}_top">[back to top]</a></span>));
   } else {
-    $html = qq(<a id="$self->{'id'}_top"></a><h2>Phenotypes associated with the gene from variation annotations</h2>) . $table->render;
+    $html = qq(<a id="$self->{'id'}_top"></a><h2>Phenotype, trait and disease annotations associated with variants in this gene</h2>) . $table->render;
   }
 
   return $html;
@@ -143,7 +143,7 @@ sub stats_table {
     my $warning = $total > $max_lines ? $warning_text : '';
   
     push @rows, {
-      phen   => "ALL variations with a phenotype annotation $warning",
+      phen   => "ALL variants with a phenotype annotation $warning",
       count  => qq{<span class="hidden">-</span>$total}, # create a hidden span to add so that ALL is always last in the table
       view   => $self->ajax_add($self->ajax_url(undef, { sub_table => 'ALL' }), 'ALL'),
       source => '-',
